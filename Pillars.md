@@ -30,7 +30,7 @@ Inherit properties (DRY) of existing (aka old / parent / base) class into a new 
 class Base_Class { };
 class Derived_Class : visibility_mode Base_Class, ... { }; // multiple inheritance
 ```
-![inheritance](inheritance.png)
+![inheritance](Pictures/inheritance.png)
 
 **Types of users:**
 

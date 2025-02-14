@@ -25,7 +25,7 @@ Follows bottom up approach: make all components and functions. Use them later. I
 
 ### Software Development Process
 
-![Flowchart of software development process](sde_process.png)
+![Flowchart of software development process](Pictures/sde_process.png)
 
 A file (code.cpp) begins with `#include <filename>` statements. *Preprocessor* substitutes them with the content of the header files.
 
