@@ -114,6 +114,7 @@ Inheritance | Yes | No
 3. To access static variables
 
 ### Constructor
+- Initializes object properties
 - Compiler makes 2 by default (i.e. until no custom is made): default - non parameterized, copy
 - Default won't work if custom constructors > 0
 - Copy won't work after custom copy constructors
@@ -171,11 +172,13 @@ friend return_type class_1::func(); // declaration in class_2 let's say
 friend class class_1; // all class_1 funcs. are friend of class_2 (it's a friend class)
 ```
 
-
-
-
 ### This ptr
-refers to current instance of class
+
+= local *object ptr* in every instance member, or non-static, function containing address of the caller object (aka refers to current instance, or caller object, of class)
+
+Ptr contains address of the data type for which it's defined. Hence `this` points to object type.
+
+Can't be modified.
 
 Can be used to-
 1. Declare indexers (The C/C++ indexer uses the parser to create a database of your source and header files that provides the basis for C/C++ search, navigation features and parts of content assist. The indexer runs on a background thread and reacts to resource change events such as: C/C++ project creation/deletion.)
