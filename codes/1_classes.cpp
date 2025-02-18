@@ -1,5 +1,5 @@
-#include <iostream>
-#include <curses.h>
+#include <iostream> // cpp files: no .h
+#include <curses.h> // c files: yes .h
 #include <string>
 
 using namespace std;

@@ -29,6 +29,9 @@ class A {
 
   public:
     A(int k) { a = k; }
+
+    void same_copy() { cout << "A same_copy();\n"; }
+    void same_name_diff_args() {}
     
     ~A() { }
 };
@@ -49,6 +52,9 @@ class B : public A {
 
     B() : A(7) { }
     B(int x, int y) : A(x) { this->b = y; }
+
+    void same_copy() { cout << "B same_copy();\n"; } // method overriding
+    void same_name_diff_args(int x) {} // method hiding
 
     ~B() { }
 };
@@ -73,4 +79,18 @@ int main() {
   
   small.show_dimensions();
   obj_ptr->show_dimensions();
+
+  b_obj.same_copy(); // compiler found in B, execute
+  /**
+   * b_obj.same_name_diff_args();
+   * error- too few arguments in function call
+   *      because compiler saw the func name in B.
+   *      It searches the definition. If not found, error.
+   *      It won't go to parent. That's why, this is method hiding. Parent method is hidden.
+   *      Overloading is done in the same class.
+   */
+
+  A *derived_ptr; B b_obj2;
+  derived_ptr = &b_obj2;
+  derived_ptr->same_copy(); 
 }

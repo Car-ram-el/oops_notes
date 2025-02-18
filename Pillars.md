@@ -10,7 +10,7 @@ Virtual functions | Runtime
 
 
 #### Func overloading
-= Same name, different args
+= Same name, different args in same class
 
 Rules to decide function
  1. Found exact match with a declaration? Done. Else,
@@ -57,6 +57,23 @@ So when private / protected?
 
 Sometimes the parent defined functions might differ in aim. Maybe child object won't want to use parent's function. (In 4_inheritance). No is-a relation here.
 
+3 types of **relations** with parent:
+```cpp
+class Is_a : public A { };
+
+class Has_a {
+  A *obj = new A();
+  // ...
+};
+
+class Uses_a {
+  void disp() {
+    A *obj = new A();
+    // ...
+  }
+};
+```
+
 #### Constructors
 - Order of constr. call = child -> parent
 - Order of constr. execution = parent -> child
@@ -69,3 +86,46 @@ In case of
 
 While in **destructors**, call & execution: child -> parent.
 Compiler works fine by default.
+
+
+#### Pure virtual function
+= do nothing function = no body
+
+```cpp
+class A {
+   public:
+      virtual void pure_virt() = 0;
+      void might_be_used() { }
+};
+
+class B : public A {
+   public:
+      void pure_virt() { }
+};
+```
+
+- Can't make object of A. Inheritance will help here. B's object calls A's functions.
+- Mandatorily override it ( with `virtual` ). Late binding allows overriding functions to run. Always.
+- - But if child (B) is abstract, add 1 more level of inheritance. Because A & B can't be used then.
+
+=> No way to call pure func now.
+
+If a class contains pure virtual func, it's an **abstract class**. In Java, `abstract` is used.
+
+*Why abstract class?*
+
+Generalization helps in better maintainability, coding practices. Make parent class to include common features of all children. But sometimes, that's just it.
+
+That's the only purpose of the class: to store common data. An entity would only be defined if it's combined with more specific info. (child classes). We know parent object won't be an entity.
+
+Student, Faculty: gender, age, personal email... are common fields. Make them into 1 Person class.
+
+But roll number, subject_grades... - student specific.
+While teaches_subject, experience... teacher specific.
+Person won't be needed as entity. Hence, make it abstract.
+
+
+
+#### Diamond Problem (multiple-path inheritance)
+
+<!-- TODO insert image and explain problem, soln -->

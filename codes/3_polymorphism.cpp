@@ -28,20 +28,19 @@ class Integer {
 };
 
 int main() {
-  // // area of circle with first area function
-  // int r;
-  // cout << "Enter radius of circle: ";
-  // cin >> r;
-  // float circleArea = area(r); // early binding at compile time
-  // cout << "Area = " << circleArea << endl;
+  // area of circle with first area function
+  int r;
+  cout << "Enter radius of circle: ";
+  cin >> r;
+  float circleArea = area(r); // early binding at compile time
+  cout << "Area = " << circleArea << endl;
 
-  // // area of rect with second area function
-  // int l, b, rectArea;
-  // cout << "Enter length and breadth: ";
-  // cin >> l >> b;
-  // rectArea = area(l, b);
-  // cout << "Area = " << rectArea << endl;
-  // TODO uncomment
+  // area of rect with second area function
+  int l, b, rectArea;
+  cout << "Enter length and breadth: ";
+  cin >> l >> b;
+  rectArea = area(l, b);
+  cout << "Area = " << rectArea << endl;
 
   Integer i1, preInc, postInc;
   i1.set_data(3);
