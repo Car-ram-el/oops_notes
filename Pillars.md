@@ -102,6 +102,9 @@ class B : public A {
    public:
       void pure_virt() { }
 };
+
+👎 A obj; 
+👍 A *der_ptr;
 ```
 
 - Can't make object of A. Inheritance will help here. B's object calls A's functions.

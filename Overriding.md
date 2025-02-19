@@ -11,6 +11,8 @@ Life | Scope of var | Throughout the program unless deleted
 Destruction | After their scope | `delete` releases the dynamic memory but ptr exists. `delete p; delete []q;`
 Flexible | Memory, life of vars can't change. Hence static. | Dynamic because of custom creation, destruction
 Use when | memory is defined (avg. of 7 numbers) | unknown memory size, variable count etc.
+Binding | Early | Late
+Speed | Quick | Slower
 
 
 ### Method overriding

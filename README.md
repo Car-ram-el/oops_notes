@@ -106,10 +106,11 @@ Inheritance | Yes | No
 
 #### Scope (::) Resolution
 
-1. To access global var when there's local with same name: `::x vs x` (global vs local)
+1. To access global var when there's local with same name: `::x` vs `x` (global vs local)
 2. When working with class(es):
-- define func outside: `return_type class_name::function_name (params) { }`
-- multiple inheritance: `outside::inside::x` or maybe`outside::x, inside::x`
+  
+    - define func outside: `return_type class_name::function_name (params) { }`
+    - multiple inheritance: `outside::inside::x` or maybe`outside::x, inside::x`
 
 3. To access static variables
 
@@ -153,7 +154,7 @@ int main() {
 #### Friend function
 - Not a member, just a friend
 - Declared in class using `friend`, defined outside that class
-- No caller object because function is not a member. Not directly, but it can access any member
+- No caller object because function is not a member. Not directly, but it can access any member (`obj->property`)
 - ++ It can access private members of classes. Imagine any other function being able to do that. Right!
 - Member function of 1 class can be friend of another
 
@@ -169,8 +170,10 @@ c2 = operator-(c1);
 cout.operator<<(c1); // cout << c1;
 
 friend return_type class_1::func(); // declaration in class_2 let's say
-friend class class_1; // all class_1 funcs. are friend of class_2 (it's a friend class)
+friend class class_1; // all class_2 funcs., properties are available for class_1 (it's a friend class)
 ```
+
+*Friendship is not mututal or inherited.*
 
 ### This ptr
 
