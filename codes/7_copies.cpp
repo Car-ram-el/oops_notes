@@ -1,6 +1,7 @@
 #include <iostream>
-
-using namespace std;
+// contains std namespace of cin, cout declarations
+// if same var in different ns, use ::
+using namespace std; // no need of scope resolution now.
 
 class Copies {
   int a,b, *ptr;
@@ -19,6 +20,20 @@ class Copies {
     }
 };
 
+namespace Custom_ns {
+  int ns_a;
+  int ns_f();
+  class Ns_class {
+    public:
+      void func();
+  };
+}
+
+using namespace Custom_ns; // func def. still require ::
+
+int Custom_ns::ns_f() { cout << "ns function\n"; }
+void Custom_ns::Ns_class::func() { cout << "scope chaining\n"; }
+
 int main() {
   Copies obj1, obj3;
   obj1.set_data(11, 21, 31);
@@ -26,4 +41,8 @@ int main() {
   Copies obj2 = obj1; // 1. object creation + init -> compiler calls copy constr.
   obj3 = obj1; // 2. just init with = calls overloaded copy assignment operator
   obj2.show_data();
+
+  ns_a = 7; // works without :: due to 'using'
+  ns_f();
+  Ns_class c; c.func();
 }

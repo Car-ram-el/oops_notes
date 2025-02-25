@@ -57,11 +57,40 @@ Double | 8 bytes
 i/p | Keyboard
 o/p | Monitor
 
-Header files contain declaration of identifiers (function names / variables / objects / macros). Their implementation is in library files.
+Header files contain declaration (prototype) of identifiers (function names / variables / classes / macros). Their implementation is in library files.
 
 To use a predefined function (or an identifier), one must include the corresponding header file in C++.
 
 Eg.- `#include <iostream.h>` for `cout` / `cin`.
+
+#### `namespace`
+Group of some declarations. 
+
+Why? To avoid ambiguity of same named functions in different header files. It puts names of its members in a distinct space so that they don't conflict with other / global namespaces.
+
+#### _File1.h_
+```cpp
+namespace File1_ns { // define globally / inside another ns
+  // declarations
+  class Class_file1 {};
+}
+namespace ns = File1_ns;
+
+namespace {...} // unnamed ns
+```
+
+If same ns in multiple files, all are combined instead of overriding.
+
+#### _File2.h_
+```cpp
+#include "File1.h"
+
+namespace File2_ns {
+  using namespace ns;
+  int x, y;
+  Class_file1 obj;
+}
+```
 
 ### Functions
 - Enter RAM when called in main. Exit after execution.
@@ -108,11 +137,10 @@ Inheritance | Yes | No
 
 1. To access global var when there's local with same name: `::x` vs `x` (global vs local)
 2. When working with class(es):
-  
     - define func outside: `return_type class_name::function_name (params) { }`
     - multiple inheritance: `outside::inside::x` or maybe`outside::x, inside::x`
-
 3. To access static variables
+4. When working with `namespace`
 
 ### Constructor
 - Initializes object properties
@@ -142,16 +170,29 @@ int main() {
 }
 ```
 
+- Sequence of operations: object creation -> get memory -> constr. call -> object init
+
+#### Dynamic Constructor
+Allocate dynamically created memory to the object's data member(s). Hence, object uses memory which is dynamically created by constr.
+
+If a ptr is a data member, it'd point to a memory location. Initializing that var's memory is dynamic constr.'s work.
+
+![ptr reference](Pictures/dynamic_constr.png)
+
 ### Destructor
 - Instance member function
 - Never static, no return type
 - Takes no argument, so no overloading is possible
 - It doesn't destroy object, it's the *last function call* for the object after which it automatically gets destroyed.
-- Define it to release resources allocated to object. 
+- Define it to release resources allocated to object (`var`) 
+- `delete` calls destr.
 
-*Imagine a ptr P in class that points to a resource R. Although P is destroyed after object destruction, R still remains in the memory with no pointer (hence, not accessible now). It's important to take care of these edges cases (and more) during destruction.*
+#### Why use it?
+Although `ptr` (in consumed area) is destroyed after object destruction, `var` (in free area) still remains in the memory with no pointer (hence, not accessible now). This is memory leak.
 
-#### Friend function
+It's important to take care of these edges cases (and more) during destruction.
+
+### Friend function
 - Not a member, just a friend
 - Declared in class using `friend`, defined outside that class
 - No caller object because function is not a member. Not directly, but it can access any member (`obj->property`)

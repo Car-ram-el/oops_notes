@@ -30,7 +30,7 @@ Inherit properties (DRY) of existing (aka old / parent / base) class into a new 
 class Base_Class { };
 class Derived_Class : access_specifier Base_Class, ... { }; // multiple inheritance
 ```
-![inheritance](Pictures/inheritance.png)
+![inheritance](../Pictures/inheritance.png)
 
 **Types of users:**
 
@@ -42,7 +42,7 @@ class Derived_Class : access_specifier Base_Class, ... { }; // multiple inherita
 2. Protected - Users_2 can
 3. Public - both can
 
-![access specifiers in inheritance](Pictures/access_specifiers.png)
+![access specifiers in inheritance](../Pictures/access_specifiers.png)
 
 All are available after object creation. Accessibility depends on the above 3.
 
@@ -131,4 +131,20 @@ Person won't be needed as entity. Hence, make it abstract.
 
 #### Diamond Problem (multiple-path inheritance)
 
-<!-- TODO insert image and explain problem, soln -->
+![flow diagram](../Pictures/diamond_problem.png)
+
+Child can access Base's properties (members + functions) through multiple paths causing confusion during access + resolution.
+
+<span style="color: lightgreen;">Soln: virtual inheritance - ensures only 1 instance of Base is inherited</span>
+
+```cpp
+class Base {...};
+class Parent1 : virtual public Base {...};
+class Parent2 : virtual public Base {...};
+class Child : public Parent1, public Parent2 {...};
+```
+
+<span style="color: orange;">Ensure proper init of virtual base classes to avoid runtime errors.</span>
+
+#### Destructor
+![virtual destr.](../Pictures/virtual_destructor.png)

@@ -10,11 +10,11 @@ This is file handling; writing (o/p), reading (i/p) from file.
 1. Open a file.
 2. Var in file through a channel -> **stream** -> a flow of bits
 
-![](./Pictures/stream.png)
+![streams](../Pictures/stream.png)
 
 Cpp has inbuilt classes that manage streams, represent file data through stream objects.
 
-![iostream & fstream](./Pictures/ios_f_stream.png)
+![iostream & fstream](../Pictures/ios_f_stream.png)
 
 `cout`, `cin` are predefined. But we have to make objects of file classes.
 
@@ -40,9 +40,11 @@ For writing, `ofstream` object represents output stream. Output in the file.
     - modification
 
 5. **`ios::binary`**
-    - binary
-    - open in binary mode
-        - i.e. won't consider special characters (text files do)
+    - binary files contain binary representation of characters
+    - open in binary mode i.e. won't consider special characters (text files do)
+        - text files: convert char -> ASCII value -> binary code
+        - when opened: every 8 bits are converted to ASCII and symbol is displayed
+        - for binary files: if interpreted as characters, yields non-printable chars. Alternative: convert binary -> hexadecimal data.
 
 `fout.open("file_name", mode);`
 
@@ -65,3 +67,18 @@ prototype | `istream& seekg (streampos pos_wrt_beginning);` | `ostream& seekp (s
 | way can be ios_base :: [beg, cur, end] | `istream& seekg (streampos offset_relative_to_way, ios_base::seekdir way);` | `ostream& seekp (streampos offset_relative_to_way, ios_base::seekdir way);`
 
 *Always close file after working in it. This will store changes from RAM to hard disk.*
+
+### Serialization
+Storing and retrieving the state of an object
+
+Class must have a default constructor
+
+### Manipulators
+Helping functions to modify i/o streams.
+
+Modifies the format of streams using << and >> operators.
+
+    - cout << "\n";
+    - Integer man.: hex, oct, dec
+    - Float man.: fixed, scientific
+    - Other like setw (set amount of space to display data)

@@ -57,7 +57,7 @@ See a virtual func? Compiler implicitly makes
    - Different for parent and each descendant class
    - vptr stores vtable's address
 
-![virtual function working](./Pictures/virtual_func_process.png)
+![virtual function working](../Pictures/virtual_func_process.png)
 
 
 [Saurabh Shukla Sir on virtual function working](https://www.youtube.com/watch?v=Z_FiER8aAqM&list=PLLYz8uHU480j37APNXBdPz7YzAi4XlQUF&index=45&ab_channel=C%2B%2BbySaurabhShuklaSir)

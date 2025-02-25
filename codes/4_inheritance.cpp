@@ -25,6 +25,7 @@ class Stack: private Array {
 // // ------------------------
 
 class A {
+// class A final {
   int a;
 
   public:
@@ -32,10 +33,21 @@ class A {
 
     void same_copy() { cout << "A same_copy();\n"; }
     void same_name_diff_args() {}
+
+    virtual void no_override() final {
+      cout << "can't override after final keyword";
+    }
     
-    ~A() { }
+    /**
+     * A *ptr = new B;
+     * delete ptr; should delete B and A's data. But early binding will only call A's destr. based on the ptr type.
+     * Soln- Late binding (ptr's content is referenced first). ptr -> destructor call in B -> destructor call in A
+     * Now both memory are released
+     */
+    virtual ~A() { }
 };
 
+// If class A is declared with final, error: a 'final' class type cannot be used as a base class
 class B : public A {
   int b;
   public:
@@ -57,6 +69,8 @@ class B : public A {
     void same_name_diff_args(int x) {} // method hiding
 
     ~B() { }
+
+    // void no_override() {} // error: cannot override 'final' function "A::no_override"
 };
 
 class Box {
