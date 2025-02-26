@@ -16,7 +16,7 @@ Follows bottom up approach: make all components and functions. Use them later. I
 
 #### Class
 - members + functions 
-- non-primitive / user defined data type
+- non-primitive / derived / user defined data type
 - blueprint (description) of object
 
 #### Object
