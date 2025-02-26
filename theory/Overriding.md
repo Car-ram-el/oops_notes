@@ -4,8 +4,8 @@
 |-- | -- | -- |
 Created by | Declaration statements | `new data_type`
 Process | Compiler gets to know about program's vars, thus the memory required, during compile time. When program runs, it loads into the RAM where vars get the memory defined. | Memory is defined during runtime. |
-| | `int *p =` | `new int;`
-| | `float *q =` | `new float[5];`
+| `int *p =` | `x` | `new int;`
+| `float *q =` | `3.5f` | `new float[5];`
 | Explanation | Ptrs are statically defined | Dynamic vars that just have static ptrs, no name. `new` returns address of the new var.
 Life | Scope of var | Throughout the program unless deleted 
 Destruction | After their scope | `delete` releases the dynamic memory but ptr exists. `delete p; delete []q;`
