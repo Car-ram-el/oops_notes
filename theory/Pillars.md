@@ -6,7 +6,7 @@ Make a capsule of (combine) all info (data + methods) related to an entity.
 | --------- | -------- | --------- |
 Function overloading | 1 function name overloaded with different jobs | Compile time
 Operator overloading | 1 operator can perform multiple jobs | Compile time
-Virtual functions | Runtime
+Virtual functions | `Base* ptr = new Derived();`, a call to an overridden virtual function would invoke the behavior defined in the derived class rather than base class (in case of non virtual function - early binding) | Runtime
 
 
 #### Func overloading

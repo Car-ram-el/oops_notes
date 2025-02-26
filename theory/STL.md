@@ -71,7 +71,7 @@ E.g. `sort(v.begin(), v.end())` takes both iterators as params. Data type of `v`
 #### Lambda expressions
 - For defining unnamed functions. Use `()` after curly braces or name the function and use.
 - `auto func = [capture list] (params) -> return_type { body };`
-  - `[&]` to capture and modify vars in the function's scope. Even `[&x, &y]` words for specific vars.
+  - `[&]` to capture and modify vars in the function's scope. Even `[&x, &y]` works for specific vars.
   - `return_type` is identified by default, but write for clarity.
 
 #### Pointer disadvantages
